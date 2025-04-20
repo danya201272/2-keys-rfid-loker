@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/61fcc075-d1cd-4c16-a22e-7debb02aced2
 
 # ADD KEYS in reader.ino
 
-Change and add values key only UI
+Change and add values key only UID
 
 first column - 13.56 Mhz, second - 125Khz cards
 
