@@ -17,14 +17,15 @@ Reader.ino for esp32 main(tm1637)
 ![image](https://github.com/user-attachments/assets/640d7fd2-782e-4048-acea-ec96e136cbc0)
 
 # Video
+
 https://github.com/user-attachments/assets/61fcc075-d1cd-4c16-a22e-7debb02aced2
-
-
 
 # ADD KEYS in reader.ino
 
-Change and add values key only UID
+Change and add values key only UI
+
 first column - 13.56, second - 125Mhz cards
+
 Support 1000 values
 
 ```
