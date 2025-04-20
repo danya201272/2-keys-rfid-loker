@@ -1,6 +1,46 @@
 # 2-keys-rfid-loker-openers
 A security system that supports opening a door or safe by simultaneously reading a dual-chip card at 125 MHz and 13.56Mhz.
-Esp8266 and esp32 and pn532 and rdm6300
+Esp8266 and esp32 and pn532 and rdm6300 and tm1637
 
 # IMAGE
 ![image](https://github.com/user-attachments/assets/7283730e-d265-4445-b874-19eb5912df0d)
+![image](https://github.com/user-attachments/assets/91e686eb-6f25-497e-b66d-8e83d2c259f3)
+![image](https://github.com/user-attachments/assets/640d7fd2-782e-4048-acea-ec96e136cbc0)
+https://github.com/user-attachments/assets/61fcc075-d1cd-4c16-a22e-7debb02aced2
+
+
+
+# ADD KEYS in reader.ino
+
+Change and add values key
+first column - 13.56, second - 125Mhz cards
+Support 1000 values
+
+```
+// 1 столбец - 13.56MHZ и 2 Столбец - 125MHZ коды доступа
+const char* codes[][2] = {
+    {"8D9104A4", "8DDA4CAB3C"},
+    {"7DB212A4", "08822B0B2D"},
+    {"1DB90BA4", "FA6D4B3528"},
+    {"AD900CA4", "B0F57B838E"},
+    {"CDDD04A4", "E723E8A2B8"}
+};
+```
+
+# Support access servo or all lockers
+
+Add in reader.ino you function, when pass cards in while.
+
+```
+void access(){
+  tmr1.start();
+  while (tmr1.getLeft() > 0 ) {
+   display.setSegments(segments);
+  }
+  display.clear();
+}
+```
+
+# System support monitor port
+
+All esp sent date in monitor port
