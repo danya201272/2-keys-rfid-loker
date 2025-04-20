@@ -1,8 +1,13 @@
 # 2-keys-rfid-loker-openers
+
 A security system that supports opening a door or safe by simultaneously reading a dual-chip card at 125 MHz and 13.56Mhz only UID.
+
 Esp8266 and esp32 and pn532 and rdm6300 and tm1637
+
 Reader.ino for esp32 main
+
 1356mhz.ino for esp32(pn532)
+
 125mhz.ino for esp8266(rdm6300)
 
 # IMAGE
