@@ -4,7 +4,7 @@ A security system that supports opening a door or safe by simultaneously reading
 
 Esp8266 and esp32 and pn532 and rdm6300 and tm1637
 
-Reader.ino for esp32 main
+Reader.ino for esp32 main(tm1637)
 
 1356mhz.ino for esp32(pn532)
 
