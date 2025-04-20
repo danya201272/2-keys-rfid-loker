@@ -1,6 +1,6 @@
 # 2-keys-rfid-loker-openers
 
-A security system that supports opening a door or safe by simultaneously reading a dual-chip card at 125 MHz and 13.56Mhz only UID.
+A security system that supports opening a door or safe by simultaneously reading a dual-chip card at 125 KHz and 13.56Mhz only UID.
 
 Esp8266 and esp32 and pn532 and rdm6300 and tm1637
 
@@ -24,12 +24,12 @@ https://github.com/user-attachments/assets/61fcc075-d1cd-4c16-a22e-7debb02aced2
 
 Change and add values key only UI
 
-first column - 13.56, second - 125Mhz cards
+first column - 13.56 Mhz, second - 125Khz cards
 
 Support 1000 values
 
 ```
-// 1 столбец - 13.56MHZ и 2 Столбец - 125MHZ коды доступа
+// 1 столбец - 13.56MHZ и 2 Столбец - 125KHZ коды доступа
 const char* codes[][2] = {
     {"8D9104A4", "8DDA4CAB3C"},
     {"7DB212A4", "08822B0B2D"},
