@@ -33,6 +33,7 @@ void setup()
 
 void loop()
 {
+  tmr1.tick();
   char c;
   String text;
   digitalWrite(LED_BUILTIN, LOW);
