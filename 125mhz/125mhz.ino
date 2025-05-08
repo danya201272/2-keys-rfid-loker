@@ -24,7 +24,7 @@ void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(9600);
-  mySerial2.begin(115200); // RX TX D3 D8
+  mySerial2.begin(57600); // RX TX D3 D8
   RFID.begin(9600);
 }
 
