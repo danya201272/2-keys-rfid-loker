@@ -14,10 +14,6 @@
 //#define PN532_IRQ   (4) // 4 to IRQ
 //Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET);
 
-#define LED_BUILTIN 2;
-
-const int ledPin = LED_BUILTIN;
-
 Adafruit_PN532 nfc(PN532_SCK, PN532_MISO, PN532_MOSI, PN532_SS);
 HardwareSerial mySerial(2); // Используем UART2
 
@@ -38,7 +34,6 @@ struct myStruct {
 void setup() {
   mySerial.begin(57600, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16 17
   Serial.begin(9600);
-  pinMode(ledPin, OUTPUT);
   delay(4000);
   nfc.begin();
   nfc.setPassiveActivationRetries(0xFF);
@@ -49,7 +44,6 @@ void loop() {
   uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };	// Buffer to store the returned UID
   uint8_t uidLength;				// Length of the UID (4 or 7 bytes depending on ISO14443A card type)
   success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength);
-  digitalWrite(ledPin, LOW);
   if (success) {
       Serial.print("UID Length: ");Serial.print(uidLength, DEC);Serial.println(" bytes");
       String card13;
@@ -63,7 +57,6 @@ void loop() {
       }
       card13.toUpperCase();
       tochars(card13);
-      digitalWrite(ledPin, HIGH);
       card13="";
 	}
   nfc.begin();
