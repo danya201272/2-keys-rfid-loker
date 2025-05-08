@@ -36,10 +36,10 @@ struct myStruct {
 };
 
 void setup() {
-  mySerial.begin(115200, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16 17
+  mySerial.begin(57600, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16 17
   Serial.begin(9600);
   pinMode(ledPin, OUTPUT);
-  delay(5000);
+  delay(4000);
   nfc.begin();
   nfc.setPassiveActivationRetries(0xFF);
 }
