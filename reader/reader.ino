@@ -75,6 +75,7 @@ void setup() {
 }
 
 void loop() {
+  tmr1.tick();
   bus.tick();
   bus2.tick();
   r1356();
