@@ -2,8 +2,6 @@
 #include <HardwareSerial.h>
 #include <Arduino.h>
 #include <TM1637Display.h>
-#include <GTimer.h>
-#include <SD.h>
 
 #define PIN_SPI_CS 5 // The ESP32 pin GPIO5
 
@@ -65,17 +63,15 @@ const char* mhz1356;
 const char* mhz125;
 
 int numRows = sizeof(codes) / sizeof(codes[0]);
-static GTimer16<millis> tmr1(5000, true, GTMode::Timeout, false); // 5 секунд таймер,До 1 минуты таймер
 
 void setup() {
   display.setBrightness(7);
-  Serial.begin(115200);
+  Serial.begin(9600);
   mySerial.begin(115200, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16-17 17-16
   mySerial2.begin(115200, SERIAL_8N1, 27, 26); // RX, TX  UART 1 - 27-D8 26-D3
 }
 
 void loop() {
-  tmr1.tick();
   bus.tick();
   bus2.tick();
   r1356();
@@ -148,8 +144,8 @@ void find(){
   }  
 }
 void access(){
-  tmr1.start();
-  while (tmr1.getLeft() > 0 ) {
+  uint32_t now = millis();
+  while (millis () - now < 5000) {
    display.setSegments(segments);
   }
   display.clear();
