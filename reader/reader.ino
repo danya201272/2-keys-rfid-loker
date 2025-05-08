@@ -145,7 +145,7 @@ void find(){
 }
 void access(){
   uint32_t now = millis();
-  while (millis () - now < 5000) {
+  while (millis () - now < 4000) {
    display.setSegments(segments);
   }
   display.clear();
