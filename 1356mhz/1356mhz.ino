@@ -37,7 +37,7 @@ struct myStruct {
   char w6;
   char w7;
 };
-void setup(void) {
+void setup() {
   mySerial.begin(115200, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16 17
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
@@ -45,7 +45,7 @@ void setup(void) {
   nfc.begin();
   nfc.setPassiveActivationRetries(0xFF);
 }
-void loop(void) {
+void loop() {
   tmr1.tick();
   boolean success;
   uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };	// Buffer to store the returned UID
