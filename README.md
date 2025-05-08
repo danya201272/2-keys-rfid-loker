@@ -45,12 +45,13 @@ Add in reader.ino you function, when pass cards in while.
 
 ```
 void access(){
-  tmr1.start();
-  while (tmr1.getLeft() > 0 ) {
+  uint32_t now = millis();
+  while (millis () - now < 5000) {
    display.setSegments(segments);
   }
   display.clear();
 }
+
 ```
 
 # System support monitor port
