@@ -1,14 +1,11 @@
 #include <SoftwareSerial.h>
 #include <Arduino.h>
-#include <GTimer.h>
 #include "GBUS.h"
 SoftwareSerial RFID(14, 12); // RX and TX D5,D6
 SoftwareSerial mySerial2(0, 15); // RX TX D3 D8
 
 // адрес 4, буфер 20 байт
 GBUS bus2(&mySerial2, 4, 20);
-
-static GTimer16<millis> tmr1(1000, true, GTMode::Interval, false); // 1 секунда таймер,До 1 минуты таймер
 
 struct myStruct2 {
   char q0;
@@ -26,14 +23,13 @@ struct myStruct2 {
 void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
-  Serial.begin(115200);
+  Serial.begin(9600);
   mySerial2.begin(115200); // RX TX D3 D8
   RFID.begin(9600);
 }
 
 void loop()
 {
-  tmr1.tick();
   char c;
   String text;
   digitalWrite(LED_BUILTIN, LOW);
@@ -44,18 +40,13 @@ void loop()
   }
   digitalWrite(LED_BUILTIN, HIGH);
   if (text.length() > 20)
-  check(text);
+  tochars(text);
   text="";
 }
 
-void check(String text) {
-  if (tmr1) {
-	text = text.substring(1, 11);
-	tochars(text);
-	}
-}
 void tochars(String text)
 {
+  text = text.substring(1, 11);
   Serial.println(text);
   if (text.length() != 10) {
     Serial.println("Ошибка: строка слишком длинная!");
