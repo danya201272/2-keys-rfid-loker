@@ -2,7 +2,6 @@
 #include <SPI.h>
 #include <Adafruit_PN532.h>
 #include <Arduino.h>
-#include <GTimer.h>
 #include "GBUS.h"
 #include <HardwareSerial.h>
 
@@ -25,8 +24,6 @@ HardwareSerial mySerial(2); // Используем UART2
 // адрес 3, буфер 20 байт
 GBUS bus(&mySerial, 3, 20);
 
-static GTimer16<millis> tmr1(1000, true, GTMode::Interval, false); // 1 секунда таймер,До 1 минуты таймер
-
 struct myStruct {
   char w0;
   char w1;
@@ -37,23 +34,23 @@ struct myStruct {
   char w6;
   char w7;
 };
+
 void setup() {
   mySerial.begin(115200, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16 17
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(ledPin, OUTPUT);
   delay(5000);
   nfc.begin();
   nfc.setPassiveActivationRetries(0xFF);
 }
+
 void loop() {
-  tmr1.tick();
   boolean success;
   uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };	// Buffer to store the returned UID
   uint8_t uidLength;				// Length of the UID (4 or 7 bytes depending on ISO14443A card type)
   success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength);
   digitalWrite(ledPin, LOW);
   if (success) {
-    if (tmr1) {
       Serial.print("UID Length: ");Serial.print(uidLength, DEC);Serial.println(" bytes");
       String card13;
       for (uint8_t i = 0; i < uidLength; i++)
@@ -68,10 +65,10 @@ void loop() {
       tochars(card13);
       digitalWrite(ledPin, HIGH);
       card13="";
-	  }
 	}
   nfc.begin();
 }
+
 void tochars(String card13)
 {
   Serial.println(card13);
