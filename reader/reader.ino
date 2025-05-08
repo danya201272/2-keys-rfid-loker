@@ -67,8 +67,8 @@ int numRows = sizeof(codes) / sizeof(codes[0]);
 void setup() {
   display.setBrightness(7);
   Serial.begin(9600);
-  mySerial.begin(115200, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16-17 17-16
-  mySerial2.begin(115200, SERIAL_8N1, 27, 26); // RX, TX  UART 1 - 27-D8 26-D3
+  mySerial.begin(57600, SERIAL_8N1, 16, 17); // RX TX UART 2 - 16-17 17-16
+  mySerial2.begin(57600, SERIAL_8N1, 27, 26); // RX, TX  UART 1 - 27-D8 26-D3
 }
 
 void loop() {
